@@ -15,7 +15,7 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 app = Flask(__name__)
 load_dotenv()
 # Connect to Database
-app.config['SECRET_KEY'] = os.environ.get('APP_KEY')
+app.secret_key = os.environ.get('APP_KEY')
 SECRET_URL = os.getenv('SECRET_PASS', None)
 app.config['SQLALCHEMY_DATABASE_URI'] = SECRET_URL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
