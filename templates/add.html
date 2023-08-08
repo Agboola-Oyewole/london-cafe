@@ -1,0 +1,82 @@
+<title>{% block title %}Add A New Cafe{% endblock %}</title>
+{% include "header.html" %}
+<div class="container p-5">
+      <h1 style="color: #C38154;">ADD NEW VENUE</h1>
+      <p class="mt-4 mb-5">Let freelancers, digital nomads, and other remote workers know about a new work-friendly venue!</p>
+      <form class="row g-3" method="post">
+        <div class="col-12">
+          <label for="inputEmail4" class="form-label">Cafe Name</label>
+          <input style="background-color: #F6F4EB;" name="name" type="text" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Map URL</label>
+          <input style="background-color: #F6F4EB;" name="map" type="url" class="form-control" id="inputPassword4" placeholder="https://....">
+        </div>
+        <div class="col-md-6">
+          <label for="inputAddress" class="form-label">Image URL</label>
+          <input style="background-color: #F6F4EB;" name="url" type="url" class="form-control" id="inputAddress" placeholder="https://....">
+        </div>
+        <div class="col-12">
+          <label for="inputCity" class="form-label">Location (Please location should be in London!)</label>
+          <input name="location" style="background-color: #F6F4EB;" type="text" class="form-control" id="inputCity">
+        </div>
+
+        <div class="col-md-3 ">
+          <label for="inputState" class="form-label">Wifi  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wifi" viewBox="0 0 16 16">
+            <path d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.444 12.444 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049z"/>
+            <path d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.455 9.455 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.473 6.473 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091l.016-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z"/>
+          </svg></label>
+          <select style="background-color: #F6F4EB;" name="wifi" id="inputState" class="form-select" aria-label="Default select example">
+            <option selected>Choose....</option>
+            <option type="submit" value="1">Has Wifi</option>
+            <option type="submit" value="0">Does not have Wifi</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="inputState" class="form-label">Toilet  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
+            <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
+            <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z"/>
+          </svg></label>
+          <select style="background-color: #F6F4EB;" name="toilet" id="inputState" class="form-select" aria-label="Default select example">
+            <option selected>Choose....</option>
+            <option type="submit" value="1">Has Toilet</option>
+            <option type="submit" value="0">Does not have Toilet</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="inputState" class="form-label">Sockets  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plug" viewBox="0 0 16 16">
+            <path d="M6 0a.5.5 0 0 1 .5.5V3h3V.5a.5.5 0 0 1 1 0V3h1a.5.5 0 0 1 .5.5v3A3.5 3.5 0 0 1 8.5 10c-.002.434-.01.845-.04 1.22-.041.514-.126 1.003-.317 1.424a2.083 2.083 0 0 1-.97 1.028C6.725 13.9 6.169 14 5.5 14c-.998 0-1.61.33-1.974.718A1.922 1.922 0 0 0 3 16H2c0-.616.232-1.367.797-1.968C3.374 13.42 4.261 13 5.5 13c.581 0 .962-.088 1.218-.219.241-.123.4-.3.514-.55.121-.266.193-.621.23-1.09.027-.34.035-.718.037-1.141A3.5 3.5 0 0 1 4 6.5v-3a.5.5 0 0 1 .5-.5h1V.5A.5.5 0 0 1 6 0zM5 4v2.5A2.5 2.5 0 0 0 7.5 9h1A2.5 2.5 0 0 0 11 6.5V4H5z"/>
+          </svg></label>
+          <select style="background-color: #F6F4EB;" name="sockets" id="inputState" class="form-select" aria-label="Default select example">
+            <option selected>Choose....</option>
+            <option type="submit" value="1">Has Sockets</option>
+            <option type="submit" value="0">Does not have Sockets</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="inputState" class="form-label">Calls  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-inbound" viewBox="0 0 16 16">
+            <path d="M15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0zm-12.2 1.182a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+          </svg></label>
+          <select style="background-color: #F6F4EB;" name="calls" id="inputState" class="form-select" aria-label="Default select example">
+            <option selected>Choose....</option>
+            <option type="submit" value="1">Can take calls</option>
+            <option type="submit" value="0">Do not take calls</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label for="inputZip" class="form-label">No. of Seats.</label>
+          <input name="seats" style="background-color: #F6F4EB;" type="text" class="form-control" id="inputZip" placeholder="E.g 13+">
+        </div>
+        <div class="col-md-2">
+          <label for="inputZip" class="form-label">Coffee Price</label>
+          <input name="coffee_price" style="background-color: #F6F4EB;" type="text" class="form-control" id="inputZip" placeholder="E.g 2.75">
+        </div>
+
+        <div class="col-12">
+          <button style="background-color: #C38154; color: #fff;" type="submit" class="btn">Add Cafe</button>
+        </div>
+      </form>
+    </div>
+
+
+{% include "footer.html" %}

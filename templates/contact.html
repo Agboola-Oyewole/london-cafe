@@ -1,0 +1,39 @@
+<title>{% block title %}Contact Me{% endblock %}</title>
+
+{% include "header.html" %}
+<div class="container pt-5">
+        <div class="p-5 text-left bg-body-tertiary rounded-3 mb-4">
+            <div style="text-align: center">
+            <img class="mb-4" src="https://cdn-icons-png.flaticon.com/128/590/590836.png" alt="its me" style="height: 100px;">
+            </div>
+            <h1 class="text-body-emphasis text-center">Let's get a cup of coffee!</h1>
+            <p class="col-lg-8 mx-auto fs-5 text-muted text-center">
+              Get in touch with us. Lorem ipsum dolor sit amet,  dolore magna aliqua.
+            </p>
+            <div class="text-left gap-2 mb-5">
+                <form class="row g-3" method="post">
+                    <div class="col-md-6">
+                      <label for="inputEmail4" class="form-label">Name</label>
+                      <input name="name" type="text" class="form-control" id="inputName4" placeholder="John Doe">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Email Address</label>
+                      <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email Address">
+                    </div>
+                    <div class="col-12">
+                      <label for="inputAddress" class="form-label">Subject</label>
+                      <input name="subject" type="text" class="form-control" id="inputAddress">
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label">Message</label>
+                      <textarea name="message" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                    </div>
+
+                    <div class="col-12">
+                      <button style="background-color: #C38154; color: #fff;" type="submit" class="btn">Send Message</button>
+                    </div>
+                  </form>
+            </div>
+            </div>
+          </div>
+{% include "footer.html" %}
