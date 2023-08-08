@@ -15,16 +15,13 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 app = Flask(__name__)
 load_dotenv()
 # Connect to Database
-app.config['SECRET_KEY'] = 'any-secret-key-you-choose'
+app.config['SECRET_KEY'] = os.environ.get('APP_KEY')
 SECRET_URL = os.getenv('SECRET_PASS', None)
-
 app.config['SQLALCHEMY_DATABASE_URI'] = SECRET_URL
-# postgresql://london_cafes_wifi_user:YHagTrti66JZ5qHiP9W1Xx3IQXoRLMfc@dpg-cj91nd2vvtos738cacd0-a.oregon-postgres.render.com/london_cafes_wifi
-# postgres://london_cafes_wifi_user:YHagTrti66JZ5qHiP9W1Xx3IQXoRLMfc@dpg-cj91nd2vvtos738cacd0-a.oregon-postgres.render.com/london_cafes_wifi
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {'pool_recycle': 280, 'pool_timeout': 100, 'pool_pre_ping': True}
 db = SQLAlchemy(app)
-app.config['SECRET_KEY'] = os.getenv('APP_KEY')
+
 year = date.today().strftime("%Y")
 gravatar = Gravatar(app,
                     size=100,
