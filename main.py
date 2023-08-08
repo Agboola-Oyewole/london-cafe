@@ -1,7 +1,6 @@
 import smtplib
 import os
 from functools import wraps
-
 from flask_gravatar import Gravatar
 from dotenv import load_dotenv
 from flask import Flask, render_template, redirect, url_for, flash, request, abort
@@ -14,13 +13,15 @@ from the_email import Email
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 app = Flask(__name__)
 load_dotenv()
-# Connect to Database
+
 app.secret_key = os.environ.get('APP_KEY')
-SECRET_URL = os.getenv('SECRET_PASS', None)
+SECRET_URL = os.environ.get('SECRET_PASS')
 app.config['SQLALCHEMY_DATABASE_URI'] = SECRET_URL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {'pool_recycle': 280, 'pool_timeout': 100, 'pool_pre_ping': True}
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {'pool_pre_ping': True}
+# Connect to Database
 db = SQLAlchemy(app)
+
 
 year = date.today().strftime("%Y")
 gravatar = Gravatar(app,
