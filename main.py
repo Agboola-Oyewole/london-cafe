@@ -16,7 +16,7 @@ load_dotenv()
 
 app.secret_key = os.environ.get('APP_KEY')
 SECRET_URL = os.environ.get('SECRET_PASS')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://london_cafes_wifi_user:YHagTrti66JZ5qHiP9W1Xx3IQXoRLMfc@dpg-cj91nd2vvtos738cacd0-a.oregon-postgres.render.com/london_cafes_wifi'
+app.config['SQLALCHEMY_DATABASE_URI'] = SECRET_URL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {'pool_pre_ping': True}
 # Connect to Database
