@@ -21,6 +21,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {'pool_pre_ping': True}
 # Connect to Database
 db = SQLAlchemy(app)
+n = None
 
 
 year = date.today().strftime("%Y")
@@ -86,7 +87,8 @@ def load_user(user_id):
 
 @app.route('/', methods=['GET', 'POST'])
 def home_page():
-    global admin_yes
+    global admin_yes, n
+    n = None
     try:
         if current_user.id == 1:
             admin_yes = True
@@ -98,6 +100,7 @@ def home_page():
         page = request.args.get('page', 1, type=int)
 
     if request.method == 'POST':
+        n = None
         wifi = request.form.get('select1')
         toilet = request.form.get('select2')
         sockets = request.form.get('select3')
@@ -105,12 +108,19 @@ def home_page():
         all_the_cafes = db.session.query(Cafe).filter(
             and_(Cafe.has_wifi == wifi, Cafe.has_toilet == toilet, Cafe.has_sockets == sockets,
                  Cafe.can_take_calls == calls)).paginate(page=page, per_page=100)
+        n = 0
+        for cafe in all_the_cafes:
+            if cafe:
+                n = 4
+            else:
+                n += 1
+        print(n)
 
     else:
         all_the_cafes = Cafe.query.paginate(page=page, per_page=5)
         # count = len(all_the_cafes)
     return render_template('index.html', cafes=all_the_cafes, date=date,
-                           logged_in=current_user.is_authenticated, user=current_user, year=year, admin=admin_yes)
+                           logged_in=current_user.is_authenticated, user=current_user, year=year, admin=admin_yes, n=n)
 
 
 @app.route('/register', methods=['GET', 'POST'])

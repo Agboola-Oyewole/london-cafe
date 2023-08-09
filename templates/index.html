@@ -10,30 +10,32 @@
           <div class="container">
             <h2>Filter by services</h2>
             <p>Type something in the input field to search the list for specific items:</p>
+              <p><strong>Note:</strong>  Make sure to <strong>select</strong> all services for better search results.</p>
 
 
             <form class = "ey" method="POST" action="{{ url_for('home_page') }}"> <!-- note action -->
               <select name="select1" class="form-select" aria-label="Default select example">
-                  <option selected value="0">Choose....</option>
+
+                  <option selected value="0">Choose....( Wifi )</option>
                   <option value="1" type="submit">Has wifi</option>
                   <option value="0" type="submit">Does not have wifi</option>
             </select>
               <select name="select2" class="form-select" aria-label="Default select example">
 
-                  <option selected value="0">Choose....</option>
+                  <option selected value="0">Choose....( Toilet )</option>
                 <option value="1" type="submit">Has toilet</option>
                 <option value="0" type="submit">Does not have toilet</option>
             </select>
 
               <select name="select3" class="form-select" aria-label="Default select example">
-                  <option selected value="0">Choose....</option>
+                  <option selected value="0">Choose....( Sockets )</option>
               <option value="1" type="submit">Has sockets</option>
               <option value="0" type="submit">Does not have sockets</option>
 
             </select>
 
               <select name="select4" class="form-select" aria-label="Default select example">
-                  <option selected value="0">Choose....</option>
+                  <option selected value="0">Choose....( Calls )</option>
             <option value="1" type="submit">Can take calls</option>
             <option value="0" type="submit">Does not take calls</option>
               </select>
@@ -72,22 +74,22 @@
 </svg>    <strong>{{ cafe.coffee_price }}</strong> </p>
 
                             <!-- Button trigger modal -->
-<button type="button" style="background-color: #C38154; color: #fff;" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" style="background-color: #C38154; color: #fff;" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal{{ cafe.id }}">
   Map View
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal{{ cafe.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Map View</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ cafe.name }}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
           <iframe width="100%" height="100%"
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4970.726919308659!2d-0.0666359!3d51.4698425!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603a1059f6a35%3A0x85d77de55824c0ab!2sSocial!5e0!3m2!1sen!2sng!4v1690989810007!5m2!1sen!2sng"
+            src="{{ cafe.map_url }}"
             frameborder="0" allowfullscreen="" style="position:absolute; top:0; left: 0">
           </iframe>
         </div>
@@ -111,7 +113,14 @@
                       </div>
                     </div>
                 </div>
+
               {% endfor %}
+                {% if n == 0 %}
+                <p class="text-right mt-3">
+   No result found!
+</p>
+
+                {% endif %}
 <div class="text-right">
     <a href="{{ url_for('home_page', page=cafes.prev_num) }}"
        class="btn btn-outline-dark
